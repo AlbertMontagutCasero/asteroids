@@ -7,7 +7,7 @@ namespace Asteroids
     public class MovementMotorTests
     {
         [Test]
-        public void GivenNoDirection_WhenGetNextFrameForce_ThenShouldBe0()
+        public void GivenMotorAndNoDirection_WhenGetNextFrameForce_ThenShouldBe0()
         {
             var doc = Substitute.For<MotorStatsProvider>();
             var sut = new MovementMotor(doc);
@@ -15,7 +15,7 @@ namespace Asteroids
             var result = sut.GetNextFrameForce(Vector2.zero);
 
             var expectedResult = Vector2.zero;
-            Assert.That(result, Is.EqualTo(expectedResult));
+            Assert.That(result.Equals(expectedResult), $"expected result: {expectedResult} result: {result}");
         }
 
         [Test]
@@ -30,12 +30,12 @@ namespace Asteroids
             var result = sut.GetNextFrameForce(direction).ToString("F2");
 
             var expectedResult = new Vector2(7.07f, 7.07f).ToString("F2");
-            Assert.That(result, Is.EqualTo(expectedResult));
+            Assert.That(result.Equals(expectedResult), $"expected result: {expectedResult} result: {result}");
         }
 
 
         [Test]
-        public void GivenAPositiveSurplusVelocity_WhenClampToMaxSpeedVelocity_ThenShouldBeTheMaxVelocity()
+        public void GivenASimulationOfMultipleFrames_WhenClampToMaxSpeedVelocity_ThenShouldBeTheExpectedResult()
         {
             const int maxSpeed = 10;
             var docMotorProvider = Substitute.For<MotorStatsProvider>();
@@ -46,23 +46,7 @@ namespace Asteroids
             var result = sut.ClampToMaxSpeedVelocity(currentVelocity);
 
             var expectedResult = new Vector2(maxSpeed, maxSpeed);
-            Assert.That(result, Is.EqualTo(expectedResult));
-        }
-
-        [Test]
-        public void GivenANegativeSurplusVelocity_WhenClampToMaxSpeedVelocity_ThenShouldBeTheMaxVelocity()
-        {
-            const int maxSpeed = 10;
-            var docMotorProvider = Substitute.For<MotorStatsProvider>();
-            docMotorProvider.GetMaxSpeed().ReturnsForAnyArgs(maxSpeed);
-            var sut = new MovementMotor(docMotorProvider);
-
-            var currentVelocity = new Vector2(-maxSpeed - 1, -maxSpeed - 1);
-            var result = sut.ClampToMaxSpeedVelocity(currentVelocity);
-
-            var expectedResult = new Vector2(-maxSpeed, -maxSpeed);
-            Assert.That(result, Is.EqualTo(expectedResult));
-        }
+            Assert.That(result.Equals(expectedResult), $"expected result: {expectedResult} result: {result}");
 
         [TestCase(1, 100f)]
         [TestCase(-1, -100f)]
