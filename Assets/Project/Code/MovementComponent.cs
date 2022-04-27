@@ -30,6 +30,11 @@ namespace Asteroids
             this.moveRequested = true;
         }
         
+        public void RequestStopMovement()
+        {
+            this.moveRequested = false;
+        }
+        
         private void FixedUpdate()
         {
             if (!this.moveRequested)
@@ -39,11 +44,6 @@ namespace Asteroids
             
             var nextFrameForce = this.motor.GetNextFrameForce(this.transform.up);
             this.rb.AddForce(nextFrameForce);
-        }
-
-        public void RequestStopMovement()
-        {
-            this.moveRequested = false;
         }
     }
 }
