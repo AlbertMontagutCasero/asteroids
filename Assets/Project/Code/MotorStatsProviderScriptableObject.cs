@@ -10,6 +10,9 @@ namespace Asteroids
 
         [SerializeField] 
         private float maxSpeed;
+        
+        [SerializeField] 
+        private float turnSpeed;
 
         public float GetAcceleration()
         {
@@ -19,6 +22,11 @@ namespace Asteroids
         public float GetMaxSpeed()
         {
             return this.maxSpeed;
+        }
+
+        public float GetTurnSpeed()
+        {
+            return this.turnSpeed;
         }
     }
 }

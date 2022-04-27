@@ -45,5 +45,11 @@ namespace Asteroids
             var nextFrameForce = this.motor.GetNextFrameForce(this.transform.up);
             this.rb.AddForce(nextFrameForce);
         }
+
+        private void Update()
+        {
+            var zRotation = this.motor.GetNextFrameRotation(this.turnDirection, Time.deltaTime);
+            this.transform.Rotate(0,0, zRotation);
+        }
     }
 }

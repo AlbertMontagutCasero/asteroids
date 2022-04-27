@@ -24,5 +24,12 @@ namespace Asteroids
             var y = Mathf.Clamp(currentVelocity.y, 0, maxSpeed);
             return new Vector2(x, y);
         }
+
+        public float GetNextFrameRotation(float direction, float deltaTime)
+        {
+            direction = Mathf.Clamp(direction, -1, 1);
+            var turnSpeed = this.statsProvider.GetTurnSpeed();
+            return direction * turnSpeed * deltaTime;
+        }
     }
 }

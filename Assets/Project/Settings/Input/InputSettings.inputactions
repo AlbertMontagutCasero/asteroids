@@ -1,5 +1,5 @@
 {
-    "name": "asteroids",
+    "name": "InputSettings",
     "maps": [
         {
             "name": "Player",
@@ -103,7 +103,7 @@
                     "id": "0565160f-f6e6-4899-b1b7-2540f132b4f1",
                     "path": "<Keyboard>/d",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "Invert",
                     "groups": "Keyboard&Mouse",
                     "action": "Turn",
                     "isComposite": false,
@@ -114,7 +114,7 @@
                     "id": "86e9de35-7824-4a83-beae-da9123468d7b",
                     "path": "<Keyboard>/a",
                     "interactions": "",
-                    "processors": "Invert",
+                    "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Turn",
                     "isComposite": false,

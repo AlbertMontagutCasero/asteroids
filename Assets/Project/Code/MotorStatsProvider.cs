@@ -4,5 +4,6 @@ namespace Asteroids
     {
         float GetAcceleration();
         float GetMaxSpeed();
+        float GetTurnSpeed();
     }
 }
