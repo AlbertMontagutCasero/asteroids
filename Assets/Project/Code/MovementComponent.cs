@@ -11,8 +11,8 @@ namespace Asteroids
         private Rigidbody2D rb;
         private MovementMotor motor;
 
-        [SerializeField]
-        private Vector2 testDirection;
+        private float turnDirection;
+        private bool moveRequested;
 
         private void Awake()
         {
@@ -20,10 +20,30 @@ namespace Asteroids
             this.motor = new MovementMotor(this.statsProvider);
         }
 
+        public void RequestTurn(float requestedDirection)
+        {
+            this.turnDirection = requestedDirection;
+        }
+        
+        public void RequestMove()
+        {
+            this.moveRequested = true;
+        }
+        
         private void FixedUpdate()
         {
-            var nextFrameForce = this.motor.GetNextFrameForce(this.testDirection);
+            if (!this.moveRequested)
+            {
+                return;
+            }
+            
+            var nextFrameForce = this.motor.GetNextFrameForce(this.transform.up);
             this.rb.AddForce(nextFrameForce);
+        }
+
+        public void RequestStopMovement()
+        {
+            this.moveRequested = false;
         }
     }
 }
