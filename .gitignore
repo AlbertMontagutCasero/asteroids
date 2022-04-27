@@ -76,5 +76,5 @@ crashlytics-build.properties
 .DS_Store
 
 # Just imported assets
-/[Aa]ssets/WipImportedAssets
+/[Aa]ssets/**/WipImportedAssets
 
