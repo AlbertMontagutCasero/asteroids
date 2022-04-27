@@ -7,7 +7,7 @@ namespace Asteroids
     public class MovementMotorTests
     {
         [Test]
-        public void GivenMotorAndNoDirection_WhenGetNextFrameForce_ThenShouldBe0()
+        public void GivenNoDirection_WhenGetNextFrameForce_ThenShouldBe0()
         {
             var doc = Substitute.For<MotorStatsProvider>();
             var sut = new MovementMotor(doc);
@@ -15,7 +15,7 @@ namespace Asteroids
             var result = sut.GetNextFrameForce(Vector2.zero);
 
             var expectedResult = Vector2.zero;
-            Assert.That(result.Equals(expectedResult), $"expected result: {expectedResult} result: {result}");
+            Assert.That(result, Is.EqualTo(expectedResult));
         }
 
         [Test]
@@ -30,7 +30,7 @@ namespace Asteroids
             var result = sut.GetNextFrameForce(direction).ToString("F2");
 
             var expectedResult = new Vector2(7.07f, 7.07f).ToString("F2");
-            Assert.That(result.Equals(expectedResult), $"expected result: {expectedResult} result: {result}");
+            Assert.That(result, Is.EqualTo(expectedResult));
         }
 
 
