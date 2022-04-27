@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52c6a3bd398d4ed588b588c7fb64b0fa, type: 3}
   m_Name: PlayerMotorStatsProvider
   m_EditorClassIdentifier: 
-  acceleration: 1
-  maxSpeed: 5
-  turnSpeed: 100
+  acceleration: 5
+  maxSpeed: 7
+  turnSpeed: 150
