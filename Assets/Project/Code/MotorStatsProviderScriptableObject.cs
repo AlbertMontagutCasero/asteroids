@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Asteroids
 {
-    [CreateAssetMenu(menuName = "create/MotorStatsProvider", fileName = "MotorStatsProvider", order = 0)]
+    [CreateAssetMenu(menuName = "MotorStatsProvider", fileName = "MotorStatsProvider", order = 0)]
     public class MotorStatsProviderScriptableObject : ScriptableObject, MotorStatsProvider
     {
         [SerializeField] 
