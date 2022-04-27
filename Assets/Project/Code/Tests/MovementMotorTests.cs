@@ -35,7 +35,7 @@ namespace Asteroids
 
 
         [Test]
-        public void GivenASimulationOfMultipleFrames_WhenClampToMaxSpeedVelocity_ThenShouldBeTheExpectedResult()
+        public void GivenAPositiveSurplusVelocity_WhenClampToMaxSpeedVelocity_ThenShouldBeTheMaxVelocity()
         {
             const int maxSpeed = 10;
             var docMotorProvider = Substitute.For<MotorStatsProvider>();
@@ -46,7 +46,22 @@ namespace Asteroids
             var result = sut.ClampToMaxSpeedVelocity(currentVelocity);
 
             var expectedResult = new Vector2(maxSpeed, maxSpeed);
-            Assert.That(result.Equals(expectedResult), $"expected result: {expectedResult} result: {result}");
+            Assert.That(result, Is.EqualTo(expectedResult));
+        }
+
+        [Test]
+        public void GivenANegativeSurplusVelocity_WhenClampToMaxSpeedVelocity_ThenShouldBeTheMaxVelocity()
+        {
+            const int maxSpeed = 10;
+            var docMotorProvider = Substitute.For<MotorStatsProvider>();
+            docMotorProvider.GetMaxSpeed().ReturnsForAnyArgs(maxSpeed);
+            var sut = new MovementMotor(docMotorProvider);
+
+            var currentVelocity = new Vector2(-maxSpeed - 1, -maxSpeed - 1);
+            var result = sut.ClampToMaxSpeedVelocity(currentVelocity);
+
+            var expectedResult = new Vector2(-maxSpeed, -maxSpeed);
+            Assert.That(result, Is.EqualTo(expectedResult));
         }
 
         [TestCase(1, 100f)]

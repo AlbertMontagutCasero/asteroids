@@ -20,8 +20,8 @@ namespace Asteroids
         public Vector2 ClampToMaxSpeedVelocity(Vector2 currentVelocity)
         {
             var maxSpeed = this.statsProvider.GetMaxSpeed();
-            var x = Mathf.Clamp(currentVelocity.x, 0, maxSpeed);
-            var y = Mathf.Clamp(currentVelocity.y, 0, maxSpeed);
+            var x = Mathf.Clamp(currentVelocity.x, -maxSpeed, maxSpeed);
+            var y = Mathf.Clamp(currentVelocity.y, -maxSpeed, maxSpeed);
             return new Vector2(x, y);
         }
 

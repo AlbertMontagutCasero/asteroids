@@ -44,6 +44,8 @@ namespace Asteroids
             
             var nextFrameForce = this.motor.GetNextFrameForce(this.transform.up);
             this.rb.AddForce(nextFrameForce);
+
+            this.rb.velocity = this.motor.ClampToMaxSpeedVelocity(this.rb.velocity);
         }
 
         private void Update()
