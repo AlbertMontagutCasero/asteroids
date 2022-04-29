@@ -46,3 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputControllerPrefab: {fileID: 4475233767898371639, guid: c9cd997b682e8464ca747edd2f5328cf, type: 3}
   playerPrefab: {fileID: 7218869605379299543, guid: 982b97a1fe42b492aa1c54b0be6ec397, type: 3}
+  asteroidsCameraPrefab: {fileID: 2238583050534886036, guid: cdf7bdc34bd104b7fa9016af2f037510, type: 3}
