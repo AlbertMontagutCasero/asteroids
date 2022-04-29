@@ -25,14 +25,14 @@ namespace Asteroids
             this.serviceDictionary.Add(type, service);
         }
 
-        public T GetService<T>()
+        public T GetService<T>() where T: Service
         {
             Type type = typeof(T);
 
             return (T) this.serviceDictionary[type];
         }
 
-        public void UnRegisterService<T>()
+        public void UnRegisterService<T>() where T: Service
         {
             Type type = typeof(T);
             this.serviceDictionary.Remove(type);

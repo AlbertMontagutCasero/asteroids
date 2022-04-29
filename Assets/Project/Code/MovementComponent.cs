@@ -3,31 +3,28 @@ using UnityEngine;
 namespace Asteroids
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class MovementComponent : MonoBehaviour, ToroidalMovable
+    public class MovementComponent : MonoBehaviour, ToroidalMovable, Rotator
     {
         [SerializeField] 
         private MotorStatsProviderScriptableObject statsProvider;
         
         private Rigidbody2D rb;
-        private MovementMotor motor;
 
         private float turnDirection;
         private bool moveRequested;
+        
         private ToroidalMovementUseCase toroidalMovementUseCase;
+        private TurnUseCase turnUseCase;
 
         private void Awake()
         {
             this.rb = this.GetComponent<Rigidbody2D>();
-            
-            // SRP VIOLATION: Motor tiene 2 responsabilidad mover y rotar, dos motivos de cambio, hay objetos que no
-            // hace falta que roten cada frame
-            this.motor = new MovementMotor();
-            this.motor.SetStatsProvider(this.statsProvider);
         }
 
         private void Start()
         {
             this.toroidalMovementUseCase = DomainServiceLocator.GetInstance().GetService<ToroidalMovementUseCase>();
+            this.turnUseCase = DomainServiceLocator.GetInstance().GetService<TurnUseCase>();
         }
 
         public void RequestTurn(float requestedDirection)
@@ -58,8 +55,7 @@ namespace Asteroids
 
         private void Update()
         {
-            var zRotation = this.motor.GetNextFrameRotation(this.turnDirection, Time.deltaTime);
-            this.transform.Rotate(0,0, zRotation);
+            this.turnUseCase.Turn(this, this.turnDirection, Time.deltaTime);
         }
 
         public MotorStatsProvider GetStatsProvider()
@@ -95,6 +91,11 @@ namespace Asteroids
         public void SetPosition(Vector2 newPosition)
         {
             this.rb.position = newPosition;
+        }
+
+        public void Rotate(float zAngle)
+        {
+            this.transform.Rotate(0,0, zAngle);
         }
     }
 }

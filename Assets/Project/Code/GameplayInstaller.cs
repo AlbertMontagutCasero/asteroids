@@ -26,7 +26,10 @@ namespace Asteroids
             var domainEventDispatcher = new DomainSignalDispatcher();
             
             var toroidalMovementUseCase = new ToroidalMovementUseCase(map, domainEventDispatcher);
+            var turnUseCase = new TurnUseCase();
+            
             DomainServiceLocator.GetInstance().RegisterController(toroidalMovementUseCase);
+            DomainServiceLocator.GetInstance().RegisterController(turnUseCase);
 
             this.inputController = Instantiate(this.inputControllerPrefab);
             this.inputController.SetMovementComponent(this.player);
