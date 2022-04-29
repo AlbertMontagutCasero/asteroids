@@ -47,12 +47,13 @@ namespace Asteroids
         
         private void FixedUpdate()
         {
-            if (!this.moveRequested)
+            if (this.moveRequested)
             {
+                this.toroidalMovementUseCase.Move(this);
                 return;
             }
-
-            this.toroidalMovementUseCase.Move(this);
+            
+            this.toroidalMovementUseCase.ExecuteMovementByInertia(this);
         }
 
         private void Update()
@@ -70,7 +71,7 @@ namespace Asteroids
         {
             return this.transform.up;
         }
-
+        
         public void ApplyForce(Vector2 nextFrameForce)
         {
             this.rb.AddForce(nextFrameForce);
@@ -93,7 +94,7 @@ namespace Asteroids
 
         public void SetPosition(Vector2 newPosition)
         {
-            this.rb.MovePosition(newPosition);
+            this.rb.position = newPosition;
         }
     }
 }

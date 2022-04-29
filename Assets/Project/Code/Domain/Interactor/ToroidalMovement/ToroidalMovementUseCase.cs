@@ -28,11 +28,16 @@ namespace Asteroids
             var currentVelocity = movable.GetCurrentVelocity();
             var clampedMaxVelocity = this.motor.ClampToMaxSpeedVelocity(currentVelocity);
             movable.ClampMaxSpeed(clampedMaxVelocity);
-
+            
+            this.ExecuteMovementByInertia(movable);
+        }
+        
+        public void ExecuteMovementByInertia(ToroidalMovable movable)
+        {
             var positionAfterMoving = movable.GetPosition();
             var finalToroidalPosition = this.toroidalMap.CalculateToroidalPosition(positionAfterMoving);
             movable.SetPosition(finalToroidalPosition);
-
+            
             this.positionUpdatedSignal.Position = finalToroidalPosition;
             this.signalDispatcher.Dispatch(this.positionUpdatedSignal);
         }
