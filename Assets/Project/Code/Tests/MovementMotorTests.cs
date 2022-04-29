@@ -10,7 +10,8 @@ namespace Asteroids
         public void GivenMotorAndNoDirection_WhenGetNextFrameForce_ThenShouldBe0()
         {
             var doc = Substitute.For<MotorStatsProvider>();
-            var sut = new MovementMotor(doc);
+            var sut = new MovementMotor();
+            sut.SetStatsProvider(doc);
 
             var result = sut.GetNextFrameForce(Vector2.zero);
 
@@ -24,7 +25,8 @@ namespace Asteroids
             const float acceleration = 10f;
             var docMotorProvider = Substitute.For<MotorStatsProvider>();
             docMotorProvider.GetAcceleration().Returns(acceleration);
-            var sut = new MovementMotor(docMotorProvider);
+            var sut = new MovementMotor();
+            sut.SetStatsProvider(docMotorProvider);
 
             var direction = new Vector2(1, 1);
             var result = sut.GetNextFrameForce(direction).ToString("F2");
@@ -40,7 +42,8 @@ namespace Asteroids
             const int maxSpeed = 10;
             var docMotorProvider = Substitute.For<MotorStatsProvider>();
             docMotorProvider.GetMaxSpeed().ReturnsForAnyArgs(maxSpeed);
-            var sut = new MovementMotor(docMotorProvider);
+            var sut = new MovementMotor();
+            sut.SetStatsProvider(docMotorProvider);
 
             var currentVelocity = new Vector2(maxSpeed + 1, maxSpeed + 1);
             var result = sut.ClampToMaxSpeedVelocity(currentVelocity);
@@ -55,7 +58,8 @@ namespace Asteroids
             const int maxSpeed = 10;
             var docMotorProvider = Substitute.For<MotorStatsProvider>();
             docMotorProvider.GetMaxSpeed().ReturnsForAnyArgs(maxSpeed);
-            var sut = new MovementMotor(docMotorProvider);
+            var sut = new MovementMotor();
+            sut.SetStatsProvider(docMotorProvider);
 
             var currentVelocity = new Vector2(-maxSpeed - 1, -maxSpeed - 1);
             var result = sut.ClampToMaxSpeedVelocity(currentVelocity);
@@ -72,7 +76,8 @@ namespace Asteroids
             const int turnSpeed = 100;
             var docMotorProvider = Substitute.For<MotorStatsProvider>();
             docMotorProvider.GetTurnSpeed().ReturnsForAnyArgs(turnSpeed);
-            var sut = new MovementMotor(docMotorProvider);
+            var sut = new MovementMotor();
+            sut.SetStatsProvider(docMotorProvider);
 
             var deltaTime = 1f;
             var result = sut.GetNextFrameRotation(direction, deltaTime);

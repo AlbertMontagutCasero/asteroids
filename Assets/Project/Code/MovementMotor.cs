@@ -4,11 +4,11 @@ namespace Asteroids
 {
     public class MovementMotor
     {
-        private readonly MotorStatsProvider statsProvider;
+        private MotorStatsProvider statsProvider;
 
-        public MovementMotor(MotorStatsProvider statsProvider)
+        public void SetStatsProvider(MotorStatsProvider newStatsProvider)
         {
-            this.statsProvider = statsProvider;
+            this.statsProvider = newStatsProvider;
         }
 
         public Vector2 GetNextFrameForce(Vector2 direction)
