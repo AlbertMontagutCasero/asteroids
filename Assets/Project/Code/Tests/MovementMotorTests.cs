@@ -9,7 +9,7 @@ namespace Asteroids
         [Test]
         public void GivenMotorAndNoDirection_WhenGetNextFrameForce_ThenShouldBe0()
         {
-            var doc = Substitute.For<MotorStatsProvider>();
+            var doc = Substitute.For<MovementStatsProvider>();
             var sut = new MovementMotor();
             sut.SetStatsProvider(doc);
 
@@ -23,7 +23,7 @@ namespace Asteroids
         public void GivenDirectionAndAcceleration_WhenGetNextFrameForce_ThenShouldBeTheExpectedResult()
         {
             const float acceleration = 10f;
-            var docMotorProvider = Substitute.For<MotorStatsProvider>();
+            var docMotorProvider = Substitute.For<MovementStatsProvider>();
             docMotorProvider.GetAcceleration().Returns(acceleration);
             var sut = new MovementMotor();
             sut.SetStatsProvider(docMotorProvider);
@@ -40,7 +40,7 @@ namespace Asteroids
         public void GivenAPositiveSurplusVelocity_WhenClampToMaxSpeedVelocity_ThenShouldBeTheMaxVelocity()
         {
             const int maxSpeed = 10;
-            var docMotorProvider = Substitute.For<MotorStatsProvider>();
+            var docMotorProvider = Substitute.For<MovementStatsProvider>();
             docMotorProvider.GetMaxSpeed().ReturnsForAnyArgs(maxSpeed);
             var sut = new MovementMotor();
             sut.SetStatsProvider(docMotorProvider);
@@ -56,7 +56,7 @@ namespace Asteroids
         public void GivenANegativeSurplusVelocity_WhenClampToMaxSpeedVelocity_ThenShouldBeTheMaxVelocity()
         {
             const int maxSpeed = 10;
-            var docMotorProvider = Substitute.For<MotorStatsProvider>();
+            var docMotorProvider = Substitute.For<MovementStatsProvider>();
             docMotorProvider.GetMaxSpeed().ReturnsForAnyArgs(maxSpeed);
             var sut = new MovementMotor();
             sut.SetStatsProvider(docMotorProvider);

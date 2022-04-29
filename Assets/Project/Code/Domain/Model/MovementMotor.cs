@@ -4,9 +4,9 @@ namespace Asteroids
 {
     public class MovementMotor
     {
-        private MotorStatsProvider statsProvider;
+        private MovementStatsProvider statsProvider;
 
-        public void SetStatsProvider(MotorStatsProvider newStatsProvider)
+        public void SetStatsProvider(MovementStatsProvider newStatsProvider)
         {
             this.statsProvider = newStatsProvider;
         }

@@ -11,7 +11,7 @@ namespace Asteroids
             float direction, float expectedResult)
         {
             const int turnSpeed = 100;
-            var docMotorProvider = Substitute.For<MotorStatsProvider>();
+            var docMotorProvider = Substitute.For<MovementStatsProvider>();
             docMotorProvider.GetTurnSpeed().ReturnsForAnyArgs(turnSpeed);
             var sut = new TorqueMotor();
             sut.SetStatsProvider(docMotorProvider);

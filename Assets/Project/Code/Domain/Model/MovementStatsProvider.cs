@@ -1,6 +1,6 @@
 namespace Asteroids
 {
-    public interface MotorStatsProvider
+    public interface MovementStatsProvider
     {
         float GetAcceleration();
         float GetMaxSpeed();

@@ -6,7 +6,7 @@ namespace Asteroids
     public class MovementComponent : MonoBehaviour, ToroidalMovable, Rotator
     {
         [SerializeField] 
-        private MotorStatsProviderScriptableObject statsProvider;
+        private MovementStatsProviderScriptableObject statsProvider;
         
         private Rigidbody2D rb;
 
@@ -58,7 +58,7 @@ namespace Asteroids
             this.turnUseCase.Turn(this, this.turnDirection, Time.deltaTime);
         }
 
-        public MotorStatsProvider GetStatsProvider()
+        public MovementStatsProvider GetStatsProvider()
         {
             return this.statsProvider;
         }

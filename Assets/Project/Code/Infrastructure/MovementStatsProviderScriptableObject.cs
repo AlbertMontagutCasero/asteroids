@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Asteroids
 {
     [CreateAssetMenu(menuName = "MotorStatsProvider", fileName = "MotorStatsProvider", order = 0)]
-    public class MotorStatsProviderScriptableObject : ScriptableObject, MotorStatsProvider
+    public class MovementStatsProviderScriptableObject : ScriptableObject, MovementStatsProvider
     {
         [SerializeField] 
         private float acceleration;

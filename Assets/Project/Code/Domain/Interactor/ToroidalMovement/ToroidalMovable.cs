@@ -4,7 +4,7 @@ namespace Asteroids
 {
     public interface ToroidalMovable
     {
-        MotorStatsProvider GetStatsProvider();
+        MovementStatsProvider GetStatsProvider();
         Vector2 GetForwardDirection();
         void ApplyForce(Vector2 nextFrameForce);
         void ClampMaxSpeed(Vector2 velocityClamped);
