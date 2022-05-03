@@ -13,6 +13,9 @@ namespace Asteroids
         
         [SerializeField] 
         private float turnSpeed;
+        
+        [SerializeField] 
+        private float drag = 0.5f;
 
         public float GetAcceleration()
         {
@@ -27,6 +30,11 @@ namespace Asteroids
         public float GetTurnSpeed()
         {
             return this.turnSpeed;
+        }
+        
+        public float GetDrag()
+        {
+            return this.drag;
         }
     }
 }

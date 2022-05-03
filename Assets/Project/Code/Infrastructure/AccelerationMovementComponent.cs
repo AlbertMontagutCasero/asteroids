@@ -27,6 +27,8 @@ namespace Asteroids
             this.toroidalMovementUseCase = DomainServiceLocator.GetInstance().GetService<ToroidalMovementUseCase>();
             this.turnUseCase = DomainServiceLocator.GetInstance().GetService<TurnUseCase>();
             this.accelerationMovementUseCase = DomainServiceLocator.GetInstance().GetService<AccelerationMovementUseCase>();
+
+            this.rb.drag = this.statsProvider.GetDrag();
         }
 
         public void RequestTurn(float requestedDirection)

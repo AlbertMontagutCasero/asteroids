@@ -15,3 +15,4 @@ MonoBehaviour:
   acceleration: 5
   maxSpeed: 7
   turnSpeed: 150
+  drag: 0.5
