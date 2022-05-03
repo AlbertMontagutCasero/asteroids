@@ -5,7 +5,7 @@ namespace Asteroids
 {
     public class InputController : MonoBehaviour
     {
-        private MovementComponent movementComponent;
+        private AccelerationMovementComponent accelerationMovementComponent;
 
         public void MoveRequest(InputAction.CallbackContext context)
         {
@@ -14,12 +14,12 @@ namespace Asteroids
 
             if (isStartMovingRequest)
             {
-                this.movementComponent.RequestMove();
+                this.accelerationMovementComponent.RequestMove();
             }
             
             if (isStopMovingRequest)
             {
-                this.movementComponent.RequestStopMovement();
+                this.accelerationMovementComponent.RequestStopMovement();
             }
         } 
     
@@ -31,18 +31,18 @@ namespace Asteroids
             if (isStartRotatingRequest)
             {
                 var readValue = context.ReadValue<float>();
-                this.movementComponent.RequestTurn(readValue);
+                this.accelerationMovementComponent.RequestTurn(readValue);
             }
             
             if (isStopRotatingRequest)
             {
-                this.movementComponent.RequestTurn(0);
+                this.accelerationMovementComponent.RequestTurn(0);
             }
         }
 
-        public void SetMovementComponent(MovementComponent newMovementComponent)
+        public void SetMovementComponent(AccelerationMovementComponent newAccelerationMovementComponent)
         {
-            this.movementComponent = newMovementComponent;
+            this.accelerationMovementComponent = newAccelerationMovementComponent;
         }
     }
 }

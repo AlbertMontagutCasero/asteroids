@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Asteroids
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class MovementComponent : MonoBehaviour, ToroidalMovable, Rotator
+    public class AccelerationMovementComponent : MonoBehaviour, MovableWithAcceleration, Rotator, ToroidalMovable
     {
         [SerializeField] 
         private MovementStatsProviderScriptableObject statsProvider;
@@ -14,6 +14,7 @@ namespace Asteroids
         private bool moveRequested;
         
         private ToroidalMovementUseCase toroidalMovementUseCase;
+        private AccelerationMovementUseCase accelerationMovementUseCase;
         private TurnUseCase turnUseCase;
 
         private void Awake()
@@ -25,6 +26,7 @@ namespace Asteroids
         {
             this.toroidalMovementUseCase = DomainServiceLocator.GetInstance().GetService<ToroidalMovementUseCase>();
             this.turnUseCase = DomainServiceLocator.GetInstance().GetService<TurnUseCase>();
+            this.accelerationMovementUseCase = DomainServiceLocator.GetInstance().GetService<AccelerationMovementUseCase>();
         }
 
         public void RequestTurn(float requestedDirection)
@@ -46,8 +48,7 @@ namespace Asteroids
         {
             if (this.moveRequested)
             {
-                this.toroidalMovementUseCase.Move(this);
-                return;
+                this.accelerationMovementUseCase.Move(this);
             }
             
             this.toroidalMovementUseCase.ExecuteMovementByInertia(this);

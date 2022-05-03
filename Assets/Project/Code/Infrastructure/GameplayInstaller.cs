@@ -8,7 +8,7 @@ namespace Asteroids
         private InputController inputControllerPrefab;
         
         [SerializeField]
-        private MovementComponent playerPrefab;
+        private AccelerationMovementComponent playerPrefab;
 
         [SerializeField] 
         private AsteroidsCamera asteroidsCameraPrefab;
@@ -19,7 +19,7 @@ namespace Asteroids
         private HazardSpawnerComponent hazardSpawnerPrefab;
 
         private InputController inputController;
-        private MovementComponent player;
+        private AccelerationMovementComponent player;
 
         private void Start()
         {
@@ -28,9 +28,8 @@ namespace Asteroids
             var mapSizeProvider = new ToroidalMapProvider(asteroidsCamera);
             var map = mapSizeProvider.GetMap();
             
-            var domainEventDispatcher = new DomainSignalDispatcher();
-            
-            var toroidalMovementUseCase = new ToroidalMovementUseCase(map, domainEventDispatcher);
+            var accelerationMovementUseCase = new AccelerationMovementUseCase();
+            var toroidalMovementUseCase = new ToroidalMovementUseCase(map);
             var turnUseCase = new TurnUseCase();
             var enemySpawner = Instantiate(this.hazardSpawnerPrefab);
             var spawnEnemyUseCase = new SpawnNewHazardUseCase(this.hazardSpawnerConfiguration, enemySpawner);
@@ -38,6 +37,7 @@ namespace Asteroids
             DomainServiceLocator.GetInstance().RegisterController(toroidalMovementUseCase);
             DomainServiceLocator.GetInstance().RegisterController(turnUseCase);
             DomainServiceLocator.GetInstance().RegisterController(spawnEnemyUseCase);
+            DomainServiceLocator.GetInstance().RegisterController(accelerationMovementUseCase);
 
             this.inputController = Instantiate(this.inputControllerPrefab);
             this.inputController.SetMovementComponent(this.player);
