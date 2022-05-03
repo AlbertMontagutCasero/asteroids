@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace Asteroids
 {
-    public class EnemySpawnerTests
+    public class HazardSpawnerTests
     {
         [Test]
         public void GivenSpawnTime_WhenAddTimeButIsGreaterThanTheSpawnTime_ThenEnemySpawnerSpawnEnemyShouldBeCalled()
@@ -16,7 +16,7 @@ namespace Asteroids
             var sut = new SpawnNewHazardUseCase(docConfigurationProvider, docEnemySpawner);
             sut.AddTime(secondsElapsed);
             
-            docEnemySpawner.Received().SpawnEnemy(default);
+            docEnemySpawner.ReceivedWithAnyArgs().SpawnEnemy(default);
         }
         
         [Test]

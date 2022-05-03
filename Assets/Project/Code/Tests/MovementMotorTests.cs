@@ -67,7 +67,5 @@ namespace Asteroids
             var expectedResult = new Vector2(-maxSpeed, -maxSpeed);
             Assert.That(result, Is.EqualTo(expectedResult));
         }
-
-
     }
 }
