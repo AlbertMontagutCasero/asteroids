@@ -17,21 +17,33 @@ namespace Asteroids
 
         public void Move(ToroidalMovable movable)
         {
+            this.SetMotorStats(movable);
+            this.ApplyForce(movable);
+            this.ClampVelocity(movable);
+            this.ExecuteMovementByInertia(movable);
+        }
+
+        private void ClampVelocity(ToroidalMovable movable)
+        {
+            var currentVelocity = movable.GetCurrentVelocity();
+            var clampedMaxVelocity = this.motor.ClampToMaxSpeedVelocity(currentVelocity);
+            movable.ClampMaxSpeed(clampedMaxVelocity);
+        }
+
+        private void SetMotorStats(ToroidalMovable movable)
+        {
             var statsProvider = movable.GetStatsProvider();
             this.motor.SetStatsProvider(statsProvider);
+        }
 
+        private void ApplyForce(ToroidalMovable movable)
+        {
             var forwardDirection = movable.GetForwardDirection();
 
             var nextFrameForce = this.motor.GetNextFrameForce(forwardDirection);
             movable.ApplyForce(nextFrameForce);
-
-            var currentVelocity = movable.GetCurrentVelocity();
-            var clampedMaxVelocity = this.motor.ClampToMaxSpeedVelocity(currentVelocity);
-            movable.ClampMaxSpeed(clampedMaxVelocity);
-            
-            this.ExecuteMovementByInertia(movable);
         }
-        
+
         public void ExecuteMovementByInertia(ToroidalMovable movable)
         {
             var positionAfterMoving = movable.GetPosition();
