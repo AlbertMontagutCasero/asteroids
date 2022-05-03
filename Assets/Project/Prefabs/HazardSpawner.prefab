@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &404249229942582849
+--- !u!1 &382763889778996112
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 404249229942582848}
-  - component: {fileID: 7772216917620547045}
+  - component: {fileID: 4327328851370273591}
+  - component: {fileID: 4593944314126360408}
   m_Layer: 0
-  m_Name: GameplayView
+  m_Name: HazardSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &404249229942582848
+--- !u!4 &4327328851370273591
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 404249229942582849}
+  m_GameObject: {fileID: 382763889778996112}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,20 +32,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7772216917620547045
+--- !u!114 &4593944314126360408
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 404249229942582849}
+  m_GameObject: {fileID: 382763889778996112}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7c91edb2483429ba9b6c068c4207a65, type: 3}
+  m_Script: {fileID: 11500000, guid: 613a302029ca4ea7b26afec2c9e5a93e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputControllerPrefab: {fileID: 4475233767898371639, guid: c9cd997b682e8464ca747edd2f5328cf, type: 3}
-  playerPrefab: {fileID: 7218869605379299543, guid: 982b97a1fe42b492aa1c54b0be6ec397, type: 3}
-  asteroidsCameraPrefab: {fileID: 2238583050534886036, guid: cdf7bdc34bd104b7fa9016af2f037510, type: 3}
-  hazardSpawnerConfiguration: {fileID: 11400000, guid: 18ac377c7e62b48efb50cd4d0f470707, type: 2}
-  hazardSpawnerPrefab: {fileID: 4593944314126360408, guid: faeff8124d118493a8de3c11475c3050, type: 3}
+  hazardPrefab: {fileID: 1909104631254002981, guid: 0cd9d32de032d48288aa6f24547d0fa3, type: 3}
