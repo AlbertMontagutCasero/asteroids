@@ -1,6 +1,6 @@
 namespace Asteroids
 {
-    public class Hazard
+    public class Hazard: HazardMovement
     {
         private readonly Random random;
         private readonly HazardConfiguration configuration;

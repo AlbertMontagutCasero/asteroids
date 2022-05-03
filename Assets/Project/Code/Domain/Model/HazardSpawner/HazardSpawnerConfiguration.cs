@@ -1,6 +1,6 @@
 namespace Asteroids
 {
-    public interface HazardSpawnerConfiguration
+    public interface HazardSpawnerConfiguration: HazardConfiguration
     {
         float GetSpawnTime();
     }

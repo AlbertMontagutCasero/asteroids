@@ -5,7 +5,7 @@ namespace Asteroids
     public class HazardSpawnerComponent: MonoBehaviour, HazardSpawner
     {
         [SerializeField]
-        private GameObject hazardPrefab;
+        private HazardComponent hazardPrefab;
         
         private SpawnNewHazardUseCase useCase;
 
@@ -19,9 +19,10 @@ namespace Asteroids
             this.useCase.AddTime(Time.deltaTime);
         }
 
-        public void SpawnEnemy()
+        public void SpawnEnemy(HazardMovement hazardMovement)
         {
-            Instantiate(this.hazardPrefab);
+            var hazardComponent = Instantiate(this.hazardPrefab);
+            hazardComponent.SetUp(hazardMovement);
         }
     }
 }

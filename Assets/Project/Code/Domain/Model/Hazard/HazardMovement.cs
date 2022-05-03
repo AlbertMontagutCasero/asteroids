@@ -3,6 +3,6 @@ namespace Asteroids
     public interface HazardMovement
     {
         float GetSpeed();
-        float GetDirection();
+        float GetAngle();
     }
 }

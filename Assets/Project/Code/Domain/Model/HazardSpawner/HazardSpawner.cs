@@ -2,6 +2,6 @@ namespace Asteroids
 {
     public interface HazardSpawner
     {
-        void SpawnEnemy();
+        void SpawnEnemy(HazardMovement hazardMovement);
     }
 }

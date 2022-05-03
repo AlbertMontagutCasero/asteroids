@@ -19,9 +19,9 @@ namespace Asteroids
             this.useCase = DomainServiceLocator.GetInstance().GetService<ToroidalMovementUseCase>();
         }
 
-        private void SetUp(HazardMovement newHazardMovement)
+        public void SetUp(HazardMovement newHazardMovement)
         {
-            this.transform.Rotate(new Vector3(0,0, newHazardMovement.GetDirection()));
+            this.transform.Rotate(new Vector3(0,0, newHazardMovement.GetAngle()));
             this.rb.velocity = this.transform.up * newHazardMovement.GetSpeed();
         }
 

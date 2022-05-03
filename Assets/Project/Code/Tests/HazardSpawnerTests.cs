@@ -16,7 +16,7 @@ namespace Asteroids
             var sut = new SpawnNewHazardUseCase(docConfigurationProvider, docEnemySpawner);
             sut.AddTime(secondsElapsed);
             
-            docEnemySpawner.Received().SpawnEnemy();
+            docEnemySpawner.Received().SpawnEnemy(default);
         }
         
         [Test]
@@ -30,7 +30,7 @@ namespace Asteroids
             var sut = new SpawnNewHazardUseCase(docConfigurationProvider, docEnemySpawner);
             sut.AddTime(secondsElapsed);
             
-            docEnemySpawner.DidNotReceiveWithAnyArgs().SpawnEnemy();
+            docEnemySpawner.DidNotReceiveWithAnyArgs().SpawnEnemy(default);
         }
 
         [Test]
